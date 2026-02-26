@@ -13,6 +13,9 @@
         rel="stylesheet">
 
     <style>
+        /* =========================================
+            Base Styles & Variables
+        ========================================= */
         :root {
             --bg-color: #050508;
             --text-main: #e0e0e0;
@@ -44,17 +47,47 @@
             font-weight: 400;
         }
 
+        /* Navigation */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 5%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .site-logo {
+            max-width: 200px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        /* Layout */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
         section {
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
         }
 
-        /* Hero Section */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero */
         .hero {
             height: 100vh;
             display: flex;
@@ -65,30 +98,32 @@
             background-image: linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)), url('111.jpg');
             background-size: cover;
             background-position: center;
-            position: relative;
+            background-attachment: fixed;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             letter-spacing: 0.2em;
-            margin-bottom: 20px;
             color: #fff;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
         }
 
-        /* Video Section - 確実に表示させる設定 */
-        .video-wrapper {
-            position: relative;
+        /* Video Area - Fixed for Drive Preview */
+        .video-container {
             width: 100%;
-            padding-top: 56.25%;
-            /* 16:9 Aspect Ratio */
-            background: #000;
-            border: 1px solid rgba(197, 160, 89, 0.3);
+            max-width: 900px;
+            margin: 0 auto 60px auto;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding-top: 56.25%;
+            /* 16:9 */
+            background: #000;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .video-wrapper iframe {
+        .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -99,76 +134,227 @@
 
         .section-title {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--accent-gold);
-            margin-bottom: 40px;
-            letter-spacing: 0.1em;
+            margin-bottom: 20px;
         }
 
-        .image-box {
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        .graphic-wrapper {
             width: 100%;
-            margin-bottom: 40px;
+            margin: 40px 0;
             text-align: center;
         }
 
-        .image-box img {
+        .graphic-wrapper img {
             max-width: 100%;
             height: auto;
-            border-radius: 4px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Journey Grid (5 Dimensions) */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .journey-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-gold);
+        }
+
+        .journey-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            display: inline-block;
+        }
+
+        /* Image Slider */
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background: var(--accent-gold);
         }
 
         .footer {
             text-align: center;
-            padding: 60px 0;
-            font-size: 0.8rem;
-            color: var(--text-muted);
+            padding: 50px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* フェードインアニメーション */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            color: var(--text-muted);
         }
     </style>
 </head>
 
 <body>
 
+    <nav class="top-nav">
+        <img src="ラストリゾート.png" alt="Logo" class="site-logo">
+    </nav>
+
     <header class="hero">
         <div class="reveal">
             <h1>LAST RESORT</h1>
-            <p>人類最後の聖域、その物語が始まる。</p>
+            <p>AGI/ASI時代の到来。人間が人間であるための証明とは何か。</p>
         </div>
     </header>
 
     <main class="container">
 
-        <section id="video">
-            <h2 class="section-title reveal">PROLOGUE</h2>
-            <div class="video-wrapper reveal">
+        <section id="presentation">
+            <h2 class="section-title reveal">物語の始まり</h2>
+            <div class="video-container reveal">
                 <iframe src="https://drive.google.com/file/d/19kh1P7yUYNhHcVI6XxpTQB3of8rhoa2v/preview"
                     allow="autoplay"></iframe>
             </div>
         </section>
 
-        <section id="paradigm">
-            <h2 class="section-title reveal">Paradigm Shift</h2>
-            <div class="image-box reveal">
-                <img src="unnamed (9).jpg" alt="Paradigm Shift">
-            </div>
+        <section id="philosophy">
+            <h2 class="section-title reveal">3つのパラダイムシフト</h2>
+            <div class="graphic-wrapper reveal"><img src="unnamed (9).jpg" alt="Paradigm"></div>
         </section>
 
         <section id="mechanism">
-            <h2 class="section-title reveal">Mechanism</h2>
-            <div class="image-box reveal">
-                <img src="unnamed (49).jpg" alt="Mechanism">
+            <h2 class="section-title reveal">脳内を書き換える「装置」</h2>
+            <div class="graphic-wrapper reveal"><img src="unnamed (49).jpg" alt="Mechanism"></div>
+        </section>
+
+        <section id="journey">
+            <h2 class="section-title reveal">カイロスの旅：5つの次元</h2>
+            <div class="journey-grid">
+                <div class="journey-card reveal">
+                    <h3>第1：幽玄の刻印</h3>
+                    <p>歴史の縦軸に触れ、テクノロジーに抗う錨を下ろす。</p>
+                </div>
+                <div class="journey-card reveal">
+                    <h3>第2：原始の境界</h3>
+                    <p>電波のない禁足地で、自然の不条理に身を置く。</p>
+                </div>
+                <div class="journey-card reveal">
+                    <h3>第3：刹那の供物</h3>
+                    <p>命の結晶を体内に取り込む儀式。</p>
+                </div>
+                <div class="journey-card reveal">
+                    <h3>第4：叡智の特異点</h3>
+                    <p>不純物こそが、人間の証であると悟る。</p>
+                </div>
+                <div class="journey-card reveal">
+                    <h3>第5：不変の循環</h3>
+                    <p>生命の純度を高める循環へ。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title reveal">体験の断片</h2>
+            <div class="slider-container reveal">
+                <div class="slider" id="slider">
+                    <img src="9.jpg" class="slide active">
+                    <img src="10.jpg" class="slide">
+                    <img src="11.jpg" class="slide">
+                    <img src="12.jpg" class="slide">
+                    <img src="13.jpg" class="slide">
+                    <img src="14.jpg" class="slide">
+                    <img src="15.jpg" class="slide">
+                    <img src="16.jpg" class="slide">
+                    <img src="17.jpg" class="slide">
+                    <img src="18.jpg" class="slide">
+                    <img src="19.jpg" class="slide">
+                    <img src="20.jpg" class="slide">
+                    <img src="21.jpg" class="slide">
+                    <img src="22.jpg" class="slide">
+                    <img src="23.jpg" class="slide">
+                </div>
+                <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+                <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+                <div class="slider-indicators" id="indicators"></div>
             </div>
         </section>
 
@@ -179,21 +365,42 @@
     </footer>
 
     <script>
-        // スクロール時に要素を表示させるJavaScript
-        const reveal = () => {
-            const reveals = document.querySelectorAll('.reveal');
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-        window.addEventListener('scroll', reveal);
-        // 初回実行
-        reveal();
+        document.addEventListener("DOMContentLoaded", () => {
+            // Reveal Animation
+            const reveal = () => {
+                const reveals = document.querySelectorAll(".reveal");
+                reveals.forEach(el => {
+                    const top = el.getBoundingClientRect().top;
+                    if (top < window.innerHeight - 100) el.classList.add("active");
+                });
+            };
+            window.addEventListener("scroll", reveal);
+            reveal();
+
+            // Slider Logic
+            const slides = document.querySelectorAll('.slide');
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const indicatorsContainer = document.getElementById('indicators');
+            let current = 0;
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `indicator ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => { current = i; update(); };
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const update = () => {
+                slides.forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.indicator').forEach(d => d.classList.remove('active'));
+                slides[current].classList.add('active');
+                document.querySelectorAll('.indicator')[current].classList.add('active');
+            };
+
+            nextBtn.onclick = () => { current = (current + 1) % slides.length; update(); };
+            prevBtn.onclick = () => { current = (current - 1 + slides.length) % slides.length; update(); };
+        });
     </script>
 </body>
 
