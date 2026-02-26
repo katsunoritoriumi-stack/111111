@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Resort - 人類最後の聖域</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* =========================================
+            Base Styles & Variables
+        ========================================= */
+        :root {
+            --bg-color: #050508;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-gold: #c5a059;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-sans: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* =========================================
+            Top Navigation (Logo)
+        ========================================= */
+        .top-nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 5%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .site-logo {
+            max-width: 200px;
+            height: auto;
+            opacity: 0.9;
+        }
+
+        /* =========================================
+            Layout & Containers
+        ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+            Hero Section (修正箇所: 画像を背景に適用)
+        ========================================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* 背景画像の指定 (ここにあなたの画像ファイル名を入れます) */
+            background-image:
+                linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)),
+                url('111.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* パララックス効果 */
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 0.2em;
+            /* 少し広げてより荘厳に */
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+            margin-top: 60px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            /* 少し明るく */
+            max-width: 650px;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 下にスクロールを促す矢印（オプション） */
+        .hero::after {
+            content: 'SCROLL';
+            position: absolute;
+            bottom: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* =========================================
+            Video Section
+        ========================================= */
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 60px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* =========================================
+            Philosophy & Infographics
+        ========================================= */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            font-size: 1.1rem;
+        }
+
+        .graphic-wrapper {
+            width: 100%;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .graphic-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* =========================================
+            The Journey (5 Dimensions Grid)
+        ========================================= */
+        .journey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .journey-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .journey-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-gold);
+        }
+
+        .journey-card h3 {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .journey-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+            Image Slider (Carousel)
+        ========================================= */
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(197, 160, 89, 0.8);
+            border-color: var(--accent-gold);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--accent-gold);
+        }
+
+        /* =========================================
+            Epilogue & Action Links
+        ========================================= */
+        .epilogue {
+            background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05));
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+            min-width: 320px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .action-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gold);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .action-link:hover::before {
+            transform: scaleX(1);
+        }
+
+        .action-link:hover {
+            color: #000;
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="top-nav">
+        <img src="ラストリゾート.png" alt="Last Resort Logo" class="site-logo">
+    </nav>
+
+    <header class="hero">
+        <div class="reveal">
+            <h1>LAST RESORT</h1>
+            <p>AGI/ASI時代の到来。<br>アルゴリズムが全ての「正解」を瞬時に導き出す世界で、<br>人間が人間であるための証明（特異点）とは何か。</p>
+        </div>
+    </header>
+
+    <section id="presentation" class="container">
+        <h2 class="section-title reveal">物語の始まり</h2>
+        <p class="section-desc reveal">効率性と予測可能性の果てに待つのは、思考の放棄か、それとも新たな精神のルネサンスか。まずはこの物語のプロローグをご覧ください。</p>
+
+        <div class="video-container reveal">
+            <video controls preload="metadata">
+                <source src="ラストリゾート：AI時代の物語.mp4" type="video/mp4">
+                お使いのブラウザは動画タグをサポートしていません。
+            </video>
+        </div>
+    </section>
+
+    <section id="philosophy" class="container">
+        <h2 class="section-title reveal">3つのパラダイムシフト</h2>
+        <p class="section-desc reveal">人間性の特異点（シンギュラリティ）を保護し、次世代へ継承するためのコア・フィロソフィー。</p>
+
+        <div class="graphic-wrapper reveal">
+            <img src="unnamed (9).jpg" alt="クロノスからカイロスへ / 所有から還流へ / 最適解から身体的体験へ">
+        </div>
+    </section>
+
+    <section id="mechanism" class="container">
+        <h2 class="section-title reveal">脳内を書き換える「多次元的装置」</h2>
+        <p class="section-desc reveal">これは単なる小説ではない。サブストーリーが「科学」と「精神」を問い、メインストーリーが「存在」を問う。二つが交差する瞬間、あなたの脳内で宇宙が再構築される。
+        </p>
+
+        <div class="graphic-wrapper reveal">
+            <img src="unnamed (49).jpg" alt="多次元小説の構造とメカニズム">
+        </div>
+    </section>
+
+    <section id="journey" class="container">
+        <h2 class="section-title reveal">カイロスの旅：5つの次元</h2>
+        <p class="section-desc reveal">莫大な富を超えた真の意味を探求する、変容の旅（マルチディメンション）。</p>
+
+        <div class="journey-grid">
+            <div class="journey-card reveal">
+                <h3>第1の次元：幽玄の刻印</h3>
+                <p>数千年の歴史の「縦軸」に触れ、テクノロジーの加速する「横軸」に抗う錨を下ろす。個人の所有という幻想を捨て、歴史の管理人としての自覚を得る。</p>
+            </div>
+            <div class="journey-card reveal">
+                <h3>第2の次元：原始の境界</h3>
+                <p>電波も時計もない禁足地で、圧倒的な自然の不条理と暴力性に身を置く。「便利」が萎縮させた魂を解放し、ただ生命体として存在する実感を取り戻す。</p>
+            </div>
+            <div class="journey-card reveal">
+                <h3>第3の次元：刹那の供物</h3>
+                <p>命と職人技の結晶を体内に取り込む儀式。富を消費するのではなく、その一皿に関わる文化と生態系を「パトロン」として養い、地域の血流へと還流させる。</p>
+            </div>
+            <div class="journey-card reveal">
+                <h3>第4の次元：叡智の特異点</h3>
+                <p>量子コンピュータとバイオ技術を用い、計算不可能な「魂の震え（迷い、苦悩）」を可視化する。AIには模倣できない不純物こそが、人間の証であると悟る。</p>
+            </div>
+            <div class="journey-card reveal">
+                <h3>第5の次元：不変の循環</h3>
+                <p>細胞からノイズを除去し、生命の純度を高める。老いを劣化ではなく、個の輪郭を溶かし世界との調和・循環の一部となるプロセスとして受容する。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="container">
+        <h2 class="section-title reveal">体験の断片</h2>
+        <p class="section-desc reveal">クリックして次なる情景をめくり、世界を探索してください。</p>
+
+        <div class="slider-container reveal">
+            <div class="slider">
+                <img src="9.jpg" class="slide active" alt="Scene 1">
+                <img src="10.jpg" class="slide" alt="Scene 2">
+                <img src="11.jpg" class="slide" alt="Scene 3">
+                <img src="12.jpg" class="slide" alt="Scene 4">
+                <img src="13.jpg" class="slide" alt="Scene 5">
+                <img src="14.jpg" class="slide" alt="Scene 6">
+                <img src="15.jpg" class="slide" alt="Scene 7">
+                <img src="16.jpg" class="slide" alt="Scene 8">
+                <img src="17.jpg" class="slide" alt="Scene 9">
+                <img src="18.jpg" class="slide" alt="Scene 10">
+                <img src="19.jpg" class="slide" alt="Scene 11">
+                <img src="20.jpg" class="slide" alt="Scene 12">
+                <img src="21.jpg" class="slide" alt="Scene 13">
+                <img src="22.jpg" class="slide" alt="Scene 14">
+                <img src="23.jpg" class="slide" alt="Scene 15">
+            </div>
+            <button class="nav-btn prev-btn" aria-label="前の画像">&#10094;</button>
+            <button class="nav-btn next-btn" aria-label="次の画像">&#10095;</button>
+            <div class="slider-indicators">
+            </div>
+        </div>
+    </section>
+
+    <section id="epilogue" class="epilogue container">
+        <h2 class="section-title reveal">The Door is Already Open.</h2>
+        <p class="section-desc reveal" style="margin-bottom: 30px;">
+            日本の精神性を世界の「安全装置（Q周波数ガードレール）」へ。<br>
+            世界のリーダーをカイロスの旅へと導く「崑崙茶の使者」となる準備はできましたか？
+        </p>
+
+        <div class="link-container reveal">
+            <a href="https://last-resort-web-beige.vercel.app/" target="_blank" rel="noopener noreferrer"
+                class="action-link">
+                Last Resort 公式プラットフォームへ
+            </a>
+            <a href="https://note.com/kiyohiko_umagami" target="_blank" rel="noopener noreferrer" class="action-link">
+                馬神清彦 note / 多次元小説を読む
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; Project Last Resort / HGIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll(".reveal");
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add("active");
+                    }
+                });
+            };
+            window.addEventListener("scroll", revealOnScroll);
+            revealOnScroll();
+
+            const slides = document.querySelectorAll('.slide');
+            const nextBtn = document.querySelector('.next-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const indicatorsContainer = document.querySelector('.slider-indicators');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            if (totalSlides === 0) return;
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('indicator');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(dot);
+            });
+
+            const indicators = document.querySelectorAll('.indicator');
+            const updateSlider = () => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            };
+            const goToNextSlide = () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                updateSlider();
+            };
+            const goToPrevSlide = () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            };
+            const goToSlide = (index) => {
+                currentSlide = index;
+                updateSlider();
+            };
+            nextBtn.addEventListener('click', goToNextSlide);
+            prevBtn.addEventListener('click', goToPrevSlide);
+        });
+    </script>
+</body>
+
+</html>
