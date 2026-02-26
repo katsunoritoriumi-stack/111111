@@ -13,9 +13,6 @@
         rel="stylesheet">
 
     <style>
-        /* =========================================
-            Base Styles & Variables
-        ========================================= */
         :root {
             --bg-color: #050508;
             --text-main: #e0e0e0;
@@ -42,33 +39,19 @@
 
         h1,
         h2,
-        h3,
-        h4 {
+        h3 {
             font-family: var(--font-serif);
             font-weight: 400;
         }
 
-        /* Layout & Containers */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 5%;
         }
 
         section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            padding: 80px 0;
         }
 
         /* Hero Section */
@@ -79,42 +62,33 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-image:
-                linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)),
-                url('111.jpg');
+            background-image: linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)), url('111.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             position: relative;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             letter-spacing: 0.2em;
-            color: #fff;
             margin-bottom: 20px;
-            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
-            margin-top: 60px;
+            color: #fff;
         }
 
-        /* Video Container (Modified for Iframe/Video) */
-        .video-container {
+        /* Video Section - 確実に表示させる設定 */
+        .video-wrapper {
+            position: relative;
             width: 100%;
-            max-width: 900px;
-            margin: 0 auto 60px auto;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio */
+            background: #000;
+            border: 1px solid rgba(197, 160, 89, 0.3);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #000;
-            /* iframe用のアスペクト比維持 */
-            position: relative;
-            padding-top: 56.25%;
-            /* 16:9 */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .video-container video,
-        .video-container iframe {
+        .video-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -125,38 +99,42 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--accent-gold);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
         }
 
-        .section-desc {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-            font-size: 1.1rem;
-        }
-
-        .graphic-wrapper {
+        .image-box {
             width: 100%;
-            margin: 40px 0;
+            margin-bottom: 40px;
             text-align: center;
         }
 
-        .graphic-wrapper img {
+        .image-box img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
         }
 
         .footer {
             text-align: center;
-            padding: 30px;
+            padding: 60px 0;
             font-size: 0.8rem;
             color: var(--text-muted);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* フェードインアニメーション */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -166,48 +144,56 @@
     <header class="hero">
         <div class="reveal">
             <h1>LAST RESORT</h1>
-            <p>AGI/ASI時代の到来。<br>人間が人間であるための証明（特異点）とは何か。</p>
+            <p>人類最後の聖域、その物語が始まる。</p>
         </div>
     </header>
 
-    <section id="presentation" class="container">
-        <h2 class="section-title reveal">物語の始まり</h2>
-        <p class="section-desc reveal">効率性と予測可能性の果てに待つプロローグをご覧ください。</p>
+    <main class="container">
 
-        <div class="video-container reveal">
-            <video controls preload="metadata" playsinline>
-                <source src="https://drive.google.com/uc?id=19kh1P7yUYNhHcVI6XxpTQB3of8rhoa2v" type="video/mp4">
-                お使いのブラウザは動画を再生できません。
-            </video>
-        </div>
-    </section>
+        <section id="video">
+            <h2 class="section-title reveal">PROLOGUE</h2>
+            <div class="video-wrapper reveal">
+                <iframe src="https://drive.google.com/file/d/19kh1P7yUYNhHcVI6XxpTQB3of8rhoa2v/preview"
+                    allow="autoplay"></iframe>
+            </div>
+        </section>
 
-    <section id="philosophy" class="container">
-        <h2 class="section-title reveal">3つのパラダイムシフト</h2>
-        <div class="graphic-wrapper reveal">
-            <img src="unnamed (9).jpg" alt="Paradigm Shift">
-        </div>
-    </section>
+        <section id="paradigm">
+            <h2 class="section-title reveal">Paradigm Shift</h2>
+            <div class="image-box reveal">
+                <img src="unnamed (9).jpg" alt="Paradigm Shift">
+            </div>
+        </section>
+
+        <section id="mechanism">
+            <h2 class="section-title reveal">Mechanism</h2>
+            <div class="image-box reveal">
+                <img src="unnamed (49).jpg" alt="Mechanism">
+            </div>
+        </section>
+
+    </main>
 
     <footer class="footer">
         <p>&copy; Project Last Resort / HGIS. All rights reserved.</p>
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const reveals = document.querySelectorAll(".reveal");
-            const revealOnScroll = () => {
-                reveals.forEach((reveal) => {
-                    const windowHeight = window.innerHeight;
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - 100) {
-                        reveal.classList.add("active");
-                    }
-                });
-            };
-            window.addEventListener("scroll", revealOnScroll);
-            revealOnScroll();
-        });
+        // スクロール時に要素を表示させるJavaScript
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        // 初回実行
+        reveal();
     </script>
 </body>
 
