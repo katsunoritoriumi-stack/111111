@@ -42,12 +42,25 @@
 
         h1,
         h2,
-        h3 {
+        h3,
+        h4 {
             font-family: var(--font-serif);
             font-weight: 400;
         }
 
-        /* Navigation */
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* =========================================
+            Header & Navigation
+        ========================================= */
         .top-nav {
             position: absolute;
             top: 0;
@@ -64,7 +77,40 @@
             opacity: 0.9;
         }
 
-        /* Layout */
+        /* =========================================
+            Hero Section
+        ========================================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)), url('111.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 0.2em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* =========================================
+            Layout & Reveal
+        ========================================= */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -87,28 +133,9 @@
             transform: translateY(0);
         }
 
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-image: linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)), url('111.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            letter-spacing: 0.2em;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
-        }
-
-        /* Video Area - Fixed for Drive Preview */
+        /* =========================================
+            Video Section (Improved for Drive)
+        ========================================= */
         .video-container {
             width: 100%;
             max-width: 900px;
@@ -145,6 +172,9 @@
             margin: 0 auto 60px auto;
         }
 
+        /* =========================================
+            Graphics
+        ========================================= */
         .graphic-wrapper {
             width: 100%;
             margin: 40px 0;
@@ -155,10 +185,13 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Journey Grid (5 Dimensions) */
+        /* =========================================
+            Journey Grid
+        ========================================= */
         .journey-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -181,13 +214,16 @@
         }
 
         .journey-card h3 {
+            font-size: 1.4rem;
             color: var(--accent-gold);
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(197, 160, 89, 0.3);
             display: inline-block;
         }
 
-        /* Image Slider */
+        /* =========================================
+            Image Slider
+        ========================================= */
         .slider-container {
             position: relative;
             max-width: 1000px;
@@ -195,6 +231,7 @@
             aspect-ratio: 16 / 9;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -227,11 +264,12 @@
             transform: translateY(-50%);
             background: rgba(0, 0, 0, 0.6);
             color: #fff;
-            border: none;
-            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
             cursor: pointer;
             z-index: 10;
             border-radius: 50%;
+            font-size: 1.5rem;
         }
 
         .prev-btn {
@@ -264,11 +302,66 @@
             background: var(--accent-gold);
         }
 
+        /* =========================================
+            Links & Epilogue
+        ========================================= */
+        .epilogue {
+            text-align: center;
+            padding-bottom: 120px;
+        }
+
+        .link-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            background: transparent;
+            color: #fff;
+            font-family: var(--font-serif);
+            border: 1px solid var(--accent-gold);
+            min-width: 320px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .action-link:hover {
+            color: #000;
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .action-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-gold);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .action-link:hover::before {
+            transform: scaleX(1);
+        }
+
         .footer {
             text-align: center;
-            padding: 50px;
+            padding: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -276,13 +369,13 @@
 <body>
 
     <nav class="top-nav">
-        <img src="ラストリゾート.png" alt="Logo" class="site-logo">
+        <img src="ラストリゾート.png" alt="Last Resort Logo" class="site-logo">
     </nav>
 
     <header class="hero">
         <div class="reveal">
             <h1>LAST RESORT</h1>
-            <p>AGI/ASI時代の到来。人間が人間であるための証明とは何か。</p>
+            <p>AGI/ASI時代の到来。<br>アルゴリズムが全ての「正解」を導き出す世界で、<br>人間が人間であるための証明とは何か。</p>
         </div>
     </header>
 
@@ -290,6 +383,7 @@
 
         <section id="presentation">
             <h2 class="section-title reveal">物語の始まり</h2>
+            <p class="section-desc reveal">効率性と予測可能性の果てに待つのは、思考の放棄か、それとも新たな精神のルネサンスか。プロローグをご覧ください。</p>
             <div class="video-container reveal">
                 <iframe src="https://drive.google.com/file/d/19kh1P7yUYNhHcVI6XxpTQB3of8rhoa2v/preview"
                     allow="autoplay"></iframe>
@@ -298,11 +392,13 @@
 
         <section id="philosophy">
             <h2 class="section-title reveal">3つのパラダイムシフト</h2>
-            <div class="graphic-wrapper reveal"><img src="unnamed (9).jpg" alt="Paradigm"></div>
+            <p class="section-desc reveal">人間性の特異点を保護し、次世代へ継承するためのコア・フィロソフィー。</p>
+            <div class="graphic-wrapper reveal"><img src="unnamed (9).jpg" alt="Paradigm Shift"></div>
         </section>
 
         <section id="mechanism">
-            <h2 class="section-title reveal">脳内を書き換える「装置」</h2>
+            <h2 class="section-title reveal">脳内を書き換える「多次元的装置」</h2>
+            <p class="section-desc reveal">これは単なる小説ではない。科学、精神、存在を問う二つの物語が交差する瞬間、あなたの脳内で宇宙が再構築される。</p>
             <div class="graphic-wrapper reveal"><img src="unnamed (49).jpg" alt="Mechanism"></div>
         </section>
 
@@ -311,23 +407,23 @@
             <div class="journey-grid">
                 <div class="journey-card reveal">
                     <h3>第1：幽玄の刻印</h3>
-                    <p>歴史の縦軸に触れ、テクノロジーに抗う錨を下ろす。</p>
+                    <p>数千年の歴史の「縦軸」に触れ、テクノロジーの加速する「横軸」に抗う錨を下ろす。</p>
                 </div>
                 <div class="journey-card reveal">
                     <h3>第2：原始の境界</h3>
-                    <p>電波のない禁足地で、自然の不条理に身を置く。</p>
+                    <p>電波も時計もない禁足地で、圧倒的な自然の不条理と暴力性に身を置く。</p>
                 </div>
                 <div class="journey-card reveal">
                     <h3>第3：刹那の供物</h3>
-                    <p>命の結晶を体内に取り込む儀式。</p>
+                    <p>命と職人技の結晶を体内に取り込む儀式。</p>
                 </div>
                 <div class="journey-card reveal">
                     <h3>第4：叡智の特異点</h3>
-                    <p>不純物こそが、人間の証であると悟る。</p>
+                    <p>AIには模倣できない不純物こそが、人間の証であると悟る。</p>
                 </div>
                 <div class="journey-card reveal">
                     <h3>第5：不変の循環</h3>
-                    <p>生命の純度を高める循環へ。</p>
+                    <p>細胞からノイズを除去し、生命の純度を高める。</p>
                 </div>
             </div>
         </section>
@@ -358,6 +454,15 @@
             </div>
         </section>
 
+        <section id="epilogue" class="epilogue">
+            <h2 class="section-title reveal">The Door is Already Open.</h2>
+            <div class="link-container reveal">
+                <a href="https://last-resort-web-beige.vercel.app/" target="_blank" class="action-link">Last Resort
+                    公式</a>
+                <a href="https://note.com/kiyohiko_umagami" target="_blank" class="action-link">馬神清彦 note</a>
+            </div>
+        </section>
+
     </main>
 
     <footer class="footer">
@@ -366,40 +471,42 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Reveal Animation
+            // FADE REVEAL
             const reveal = () => {
                 const reveals = document.querySelectorAll(".reveal");
                 reveals.forEach(el => {
-                    const top = el.getBoundingClientRect().top;
-                    if (top < window.innerHeight - 100) el.classList.add("active");
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) el.classList.add("active");
                 });
             };
             window.addEventListener("scroll", reveal);
             reveal();
 
-            // Slider Logic
+            // SLIDER LOGIC
             const slides = document.querySelectorAll('.slide');
             const nextBtn = document.getElementById('nextBtn');
             const prevBtn = document.getElementById('prevBtn');
             const indicatorsContainer = document.getElementById('indicators');
             let current = 0;
 
-            slides.forEach((_, i) => {
-                const dot = document.createElement('div');
-                dot.className = `indicator ${i === 0 ? 'active' : ''}`;
-                dot.onclick = () => { current = i; update(); };
-                indicatorsContainer.appendChild(dot);
-            });
+            if (slides.length > 0) {
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.className = `indicator ${i === 0 ? 'active' : ''}`;
+                    dot.onclick = () => { current = i; update(); };
+                    indicatorsContainer.appendChild(dot);
+                });
 
-            const update = () => {
-                slides.forEach(s => s.classList.remove('active'));
-                document.querySelectorAll('.indicator').forEach(d => d.classList.remove('active'));
-                slides[current].classList.add('active');
-                document.querySelectorAll('.indicator')[current].classList.add('active');
-            };
+                const update = () => {
+                    slides.forEach(s => s.classList.remove('active'));
+                    document.querySelectorAll('.indicator').forEach(d => d.classList.remove('active'));
+                    slides[current].classList.add('active');
+                    document.querySelectorAll('.indicator')[current].classList.add('active');
+                };
 
-            nextBtn.onclick = () => { current = (current + 1) % slides.length; update(); };
-            prevBtn.onclick = () => { current = (current - 1 + slides.length) % slides.length; update(); };
+                nextBtn.onclick = () => { current = (current + 1) % slides.length; update(); };
+                prevBtn.onclick = () => { current = (current - 1 + slides.length) % slides.length; update(); };
+            }
         });
     </script>
 </body>
