@@ -104,7 +104,7 @@
         }
 
         /* =========================================
-            Hero Section (修正箇所: 画像を背景に適用)
+            Hero Section
         ========================================= */
         .hero {
             height: 100vh;
@@ -113,21 +113,18 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* 背景画像の指定 (ここにあなたの画像ファイル名を入れます) */
             background-image:
                 linear-gradient(rgba(5, 5, 8, 0.7), rgba(5, 5, 8, 0.7)),
                 url('111.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            /* パララックス効果 */
             position: relative;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             letter-spacing: 0.2em;
-            /* 少し広げてより荘厳に */
             color: #fff;
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
@@ -137,13 +134,11 @@
         .hero p {
             font-size: 1.1rem;
             color: var(--text-main);
-            /* 少し明るく */
             max-width: 650px;
             margin: 0 auto;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
 
-        /* 下にスクロールを促す矢印（オプション） */
         .hero::after {
             content: 'SCROLL';
             position: absolute;
@@ -184,6 +179,7 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
         }
 
         video {
@@ -403,7 +399,6 @@
 
         .action-link:hover {
             color: #000;
-            opacity: 1;
             box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
         }
 
@@ -435,8 +430,9 @@
         <p class="section-desc reveal">効率性と予測可能性の果てに待つのは、思考の放棄か、それとも新たな精神のルネサンスか。まずはこの物語のプロローグをご覧ください。</p>
 
         <div class="video-container reveal">
-            <video controls preload="metadata">
-                <source src="ラストリゾート：AI時代の物語.mp4" type="video/mp4">
+            <video controls preload="metadata" playsinline>
+                <source src="https://drive.google.com/uc?export=download&id=19kh1P7yUYNhHcVI6XxpTQB3of8rhoa2v"
+                    type="video/mp4">
                 お使いのブラウザは動画タグをサポートしていません。
             </video>
         </div>
@@ -445,9 +441,8 @@
     <section id="philosophy" class="container">
         <h2 class="section-title reveal">3つのパラダイムシフト</h2>
         <p class="section-desc reveal">人間性の特異点（シンギュラリティ）を保護し、次世代へ継承するためのコア・フィロソフィー。</p>
-
         <div class="graphic-wrapper reveal">
-            <img src="unnamed (9).jpg" alt="クロノスからカイロスへ / 所有から還流へ / 最適解から身体的体験へ">
+            <img src="unnamed (9).jpg" alt="Paradigm Shift">
         </div>
     </section>
 
@@ -455,44 +450,39 @@
         <h2 class="section-title reveal">脳内を書き換える「多次元的装置」</h2>
         <p class="section-desc reveal">これは単なる小説ではない。サブストーリーが「科学」と「精神」を問い、メインストーリーが「存在」を問う。二つが交差する瞬間、あなたの脳内で宇宙が再構築される。
         </p>
-
         <div class="graphic-wrapper reveal">
-            <img src="unnamed (49).jpg" alt="多次元小説の構造とメカニズム">
+            <img src="unnamed (49).jpg" alt="Mechanism">
         </div>
     </section>
 
     <section id="journey" class="container">
         <h2 class="section-title reveal">カイロスの旅：5つの次元</h2>
-        <p class="section-desc reveal">莫大な富を超えた真の意味を探求する、変容の旅（マルチディメンション）。</p>
-
         <div class="journey-grid">
             <div class="journey-card reveal">
                 <h3>第1の次元：幽玄の刻印</h3>
-                <p>数千年の歴史の「縦軸」に触れ、テクノロジーの加速する「横軸」に抗う錨を下ろす。個人の所有という幻想を捨て、歴史の管理人としての自覚を得る。</p>
+                <p>歴史の「縦軸」に触れ、テクノロジーの加速する「横軸」に抗う錨を下ろす。</p>
             </div>
             <div class="journey-card reveal">
                 <h3>第2の次元：原始の境界</h3>
-                <p>電波も時計もない禁足地で、圧倒的な自然の不条理と暴力性に身を置く。「便利」が萎縮させた魂を解放し、ただ生命体として存在する実感を取り戻す。</p>
+                <p>圧倒的な自然の不条理と暴力性に身を置く。</p>
             </div>
             <div class="journey-card reveal">
                 <h3>第3の次元：刹那の供物</h3>
-                <p>命と職人技の結晶を体内に取り込む儀式。富を消費するのではなく、その一皿に関わる文化と生態系を「パトロン」として養い、地域の血流へと還流させる。</p>
+                <p>命と職人技の結晶を体内に取り込む儀式。</p>
             </div>
             <div class="journey-card reveal">
                 <h3>第4の次元：叡智の特異点</h3>
-                <p>量子コンピュータとバイオ技術を用い、計算不可能な「魂の震え（迷い、苦悩）」を可視化する。AIには模倣できない不純物こそが、人間の証であると悟る。</p>
+                <p>AIには模倣できない不純物こそが、人間の証であると悟る。</p>
             </div>
             <div class="journey-card reveal">
-                <h3>第5の次元：不変の循環</h3>
-                <p>細胞からノイズを除去し、生命の純度を高める。老いを劣化ではなく、個の輪郭を溶かし世界との調和・循環の一部となるプロセスとして受容する。</p>
+                <h3>第5の次元：不変의 循環</h3>
+                <p>細胞からノイズを除去し、生命の純度を高める。</p>
             </div>
         </div>
     </section>
 
     <section id="gallery" class="container">
         <h2 class="section-title reveal">体験の断片</h2>
-        <p class="section-desc reveal">クリックして次なる情景をめくり、世界を探索してください。</p>
-
         <div class="slider-container reveal">
             <div class="slider">
                 <img src="9.jpg" class="slide active" alt="Scene 1">
@@ -511,28 +501,9 @@
                 <img src="22.jpg" class="slide" alt="Scene 14">
                 <img src="23.jpg" class="slide" alt="Scene 15">
             </div>
-            <button class="nav-btn prev-btn" aria-label="前の画像">&#10094;</button>
-            <button class="nav-btn next-btn" aria-label="次の画像">&#10095;</button>
-            <div class="slider-indicators">
-            </div>
-        </div>
-    </section>
-
-    <section id="epilogue" class="epilogue container">
-        <h2 class="section-title reveal">The Door is Already Open.</h2>
-        <p class="section-desc reveal" style="margin-bottom: 30px;">
-            日本の精神性を世界の「安全装置（Q周波数ガードレール）」へ。<br>
-            世界のリーダーをカイロスの旅へと導く「崑崙茶の使者」となる準備はできましたか？
-        </p>
-
-        <div class="link-container reveal">
-            <a href="https://last-resort-web-beige.vercel.app/" target="_blank" rel="noopener noreferrer"
-                class="action-link">
-                Last Resort 公式プラットフォームへ
-            </a>
-            <a href="https://note.com/kiyohiko_umagami" target="_blank" rel="noopener noreferrer" class="action-link">
-                馬神清彦 note / 多次元小説を読む
-            </a>
+            <button class="nav-btn prev-btn">&#10094;</button>
+            <button class="nav-btn next-btn">&#10095;</button>
+            <div class="slider-indicators"></div>
         </div>
     </section>
 
@@ -544,11 +515,10 @@
         document.addEventListener("DOMContentLoaded", () => {
             const reveals = document.querySelectorAll(".reveal");
             const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
                 reveals.forEach((reveal) => {
+                    const windowHeight = window.innerHeight;
                     const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
+                    if (elementTop < windowHeight - 100) {
                         reveal.classList.add("active");
                     }
                 });
@@ -561,39 +531,36 @@
             const prevBtn = document.querySelector('.prev-btn');
             const indicatorsContainer = document.querySelector('.slider-indicators');
             let currentSlide = 0;
-            const totalSlides = slides.length;
 
-            if (totalSlides === 0) return;
+            if (slides.length > 0) {
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('indicator');
+                    if (index === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateSlider();
+                    });
+                    indicatorsContainer.appendChild(dot);
+                });
 
-            slides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.classList.add('indicator');
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                indicatorsContainer.appendChild(dot);
-            });
+                const indicators = document.querySelectorAll('.indicator');
+                const updateSlider = () => {
+                    slides.forEach(s => s.classList.remove('active'));
+                    indicators.forEach(i => i.classList.remove('active'));
+                    slides[currentSlide].classList.add('active');
+                    indicators[currentSlide].classList.add('active');
+                };
 
-            const indicators = document.querySelectorAll('.indicator');
-            const updateSlider = () => {
-                slides.forEach(slide => slide.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                slides[currentSlide].classList.add('active');
-                indicators[currentSlide].classList.add('active');
-            };
-            const goToNextSlide = () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                updateSlider();
-            };
-            const goToPrevSlide = () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                updateSlider();
-            };
-            const goToSlide = (index) => {
-                currentSlide = index;
-                updateSlider();
-            };
-            nextBtn.addEventListener('click', goToNextSlide);
-            prevBtn.addEventListener('click', goToPrevSlide);
+                nextBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    updateSlider();
+                });
+                prevBtn.addEventListener('click', () => {
+                    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                    updateSlider();
+                });
+            }
         });
     </script>
 </body>
