@@ -823,9 +823,7 @@
             openPlayerBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 audioOverlay.classList.add('active');
-                if (!isPlaying && audioObj.paused) {
-                    togglePlay();
-                }
+                // Removed togglePlay() from here to prevent AbortError when opening
             });
 
             closePlayerBtn.addEventListener('click', () => {
